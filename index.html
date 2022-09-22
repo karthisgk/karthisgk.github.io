@@ -111,9 +111,8 @@
                             <a class="home-btn" href="#home"><i class="fa fa-home" aria-hidden="true"></i></a>
                         </li>
                         <li class="tab"><a href="#resume">Academic</a></li>
-                        <li class="tab"><a href="/resume">Resume</a></li>
-                        <!-- <li class="tab"><a href="#portfolio">PORTFOLIO</a></li>
-                        <li class="tab"><a href="#blog">BLOG</a></li> -->
+                        <li class="tab"><a onclick="goToResume(event)" href="#portfolio">Resume</a></li>
+                        <!-- <li class="tab"><a href="#blog">BLOG</a></li> -->
                         <li class="tab"><a href="#contact">CONTACT</a></li>
                     </ul>
                 </div>
@@ -711,6 +710,11 @@ String.prototype.isEmail = function(){
   var pattern = /^[a-zA-Z0-9\-_]+(\.[a-zA-Z0-9\-_]+)*@[a-z0-9]+(\-[a-z0-9]+)*(\.[a-z0-9]+(\-[a-z0-9]+)*)*\.[a-z]{2,4}$/;
   return pattern.test(this);
 };
+
+function goToResume(e){
+    e.preventDefault()
+    location.href = "/resume"
+}
 
 function contactSubmit(){
     var $name = $('.site-input.name').val();
