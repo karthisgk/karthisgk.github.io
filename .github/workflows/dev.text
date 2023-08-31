@@ -38,6 +38,6 @@ jobs:
       with:
         app-name: baydig-dev-rpm-oceanintegrationfa
         slot-name: Production
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_34AF38A65E744E7F82E4A978AC744ACF }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
         package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
 
