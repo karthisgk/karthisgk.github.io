@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karthick SG — Senior Full Stack & AI Engineer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #0f1117;
+            --mid: #374151;
+            --soft: #6b7280;
+            --rule: #e5e7eb;
+            --accent: #1d4ed8;
+            --accent-light: #eff6ff;
+            --page: #ffffff;
+        }
+
+        body {
+            background: #d1d5db;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 10.5pt;
+            line-height: 1.55;
+            color: var(--ink);
+            print-color-adjust: exact;
+            -webkit-print-color-adjust: exact;
+        }
+
+        .page {
+            background: var(--page);
+            width: 210mm;
+            min-height: 297mm;
+            margin: 12mm auto;
+            padding: 13mm 16mm 13mm 16mm;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+        }
+
+        /* HEADER */
+        .header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: start;
+            gap: 12px;
+            padding-bottom: 9px;
+            border-bottom: 2.5px solid var(--ink);
+            margin-bottom: 9px;
+        }
+
+        .header-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 28pt;
+            letter-spacing: -0.5px;
+            color: var(--ink);
+            line-height: 1.1;
+        }
+
+        .header-title {
+            font-size: 10pt;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        .header-contacts {
+            text-align: right;
+            font-size: 8.8pt;
+            color: var(--mid);
+            line-height: 1.7;
+        }
+
+        .header-contacts a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* SUMMARY */
+        .summary-box {
+            background: var(--accent-light);
+            border-left: 3px solid var(--accent);
+            padding: 8px 12px;
+            margin-bottom: 9px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .summary-box p {
+            font-size: 9.5pt;
+            color: var(--mid);
+            line-height: 1.55;
+        }
+
+        /* SECTION */
+        .section {
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 2px;
+            margin-bottom: 6px;
+        }
+
+        /* SKILLS GRID */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px 16px;
+        }
+
+        .skill-item {
+            font-size: 9pt;
+            color: var(--mid);
+            padding: 1.5px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .skill-item::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+
+        /* EXPERIENCE */
+        .job {
+            margin-bottom: 9px;
+            padding-bottom: 9px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .job:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .job-header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 1px;
+        }
+
+        .job-title {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .job-date {
+            font-size: 8.5pt;
+            color: var(--soft);
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .job-company {
+            font-size: 9pt;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .job-stack {
+            font-size: 8pt;
+            color: var(--soft);
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        ul.bullets {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.bullets li {
+            font-size: 9.2pt;
+            color: var(--mid);
+            padding: 2px 0 2px 12px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        ul.bullets li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 8pt;
+            top: 3px;
+        }
+
+        ul.bullets li strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        /* PROJECTS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 7px;
+        }
+
+        .project-card {
+            border: 1px solid var(--rule);
+            border-radius: 5px;
+            padding: 7px 9px;
+        }
+
+        .project-name {
+            font-size: 9.5pt;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 2px;
+        }
+
+        .project-stack {
+            font-size: 7.8pt;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .project-desc {
+            font-size: 8.5pt;
+            color: var(--mid);
+            line-height: 1.45;
+        }
+
+        /* EDUCATION + CERTS */
+        .edu-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .edu-item .degree {
+            font-weight: 700;
+            font-size: 9.5pt;
+            color: var(--ink);
+        }
+
+        .edu-item .school {
+            font-size: 9pt;
+            color: var(--soft);
+        }
+
+        .cert-item {
+            font-size: 9pt;
+            color: var(--mid);
+            padding: 2px 0 2px 12px;
+            position: relative;
+        }
+
+        .cert-item::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 8pt;
+            top: 3px;
+        }
+
+        /* TWO COL LAYOUT */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                padding: 12mm 14mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- HEADER -->
+        <div class="header">
+            <div>
+                <div class="header-name">Karthick SG</div>
+                <div class="header-title">Senior Full Stack Engineer &nbsp;·&nbsp; AI-Augmented Systems</div>
+            </div>
+            <div class="header-contacts">
+                karthisg.dev@gmail.com<br>
+                +91 90951 69428 &nbsp;·&nbsp; Madurai, TN (Open to Remote / Hybrid)<br>
+                <a href="https://linkedin.com/in/karthisgdotsg">linkedin.com/in/karthisgdotsg</a><br>
+                <a href="https://github.com/karthisgk">github.com/karthisgk</a> &nbsp;·&nbsp;
+                <a href="https://karthisgk.github.io">karthisgk.github.io</a><br>
+                Target CTC: ₹30–55 LPA
+            </div>
+        </div>
+
+        <!-- SUMMARY -->
+        <div class="summary-box">
+            <p>
+                Senior Full Stack Engineer with <strong>5+ years</strong> delivering production-grade, cloud-native
+                applications across MERN, MEAN, and NestJS stacks — from
+                <strong>FHIR-compliant healthcare platforms</strong> to
+                <strong>Singapore government-grade Singpass authentication systems</strong>.
+                Proven track record architecting <strong>Azure-native microservices</strong>,
+                automating CI/CD pipelines that cut release cycles by <strong>~83%</strong>,
+                and leading engineering teams in lean, high-output environments.
+                Currently at the frontier of <strong>AI Engineering</strong> — shipped a production
+                MCP server integrating Claude AI for real-time financial tooling.
+                Published <strong>3 open-source npm packages</strong> with 1,000–5,000+ downloads.
+                Seeking a <strong>Senior / Lead Full Stack role</strong> to drive technical architecture,
+                team growth, and AI-augmented product delivery.
+            </p>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="section">
+            <div class="section-title">Core Skills &amp; Technologies</div>
+            <div class="skills-grid">
+                <div class="skill-item">Node.js · Express.js · NestJS</div>
+                <div class="skill-item">React · Angular · TypeScript</div>
+                <div class="skill-item">MongoDB · PostgreSQL · Cosmos DB</div>
+                <div class="skill-item">Azure (Functions, Logic Apps, IaC / Bicep)</div>
+                <div class="skill-item">AWS (S3, Lambda, CloudFormation)</div>
+                <div class="skill-item">GitHub Actions · CI/CD Pipelines · Docker</div>
+                <div class="skill-item">Microservices · Event-Driven Architecture · Kafka</div>
+                <div class="skill-item">REST APIs · JWT · OAuth 2.0 · Singpass</div>
+                <div class="skill-item">FHIR R4 · Aidbox · Healthcare Interoperability</div>
+                <div class="skill-item">MCP Protocol · Claude AI API (Production)</div>
+                <div class="skill-item">Infrastructure-as-Code · CloudFormation · Bicep</div>
+                <div class="skill-item">React Native · SwiftUI · Mobile Development</div>
+            </div>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div class="section">
+            <div class="section-title">Professional Experience</div>
+
+            <!-- Job 1 -->
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title">Senior Software Engineer — Full Stack &amp; Cloud</div>
+                    <div class="job-date">Dec 2022 – Present · 2+ yrs</div>
+                </div>
+                <div class="job-company">Techversant Infotech Pvt. Ltd. &nbsp;·&nbsp; Madurai, TN</div>
+                <div class="job-stack">MERN · MEAN · NestJS · Azure IaC · AWS · FHIR R4 · Kafka · GitHub Actions</div>
+                <ul class="bullets">
+                    <li><strong>Engineered CI/CD pipelines</strong> with GitHub Actions across <strong>3–5 NestJS
+                            microservices</strong> deployed to Azure Function Apps — slashing release cycles from
+                        <strong>~30 min → under 5 min (~83% faster)</strong>, enabling <strong>5–15
+                            automated deployments/week</strong> with zero manual intervention.</li>
+                    <li><strong>Architected and led</strong> a multi-tenant, FHIR R4–compliant healthcare platform
+                        serving <strong>3–5 hospital tenants</strong> with NestJS modular microservices, Aidbox EHR
+                        integration, and Kafka-driven event pipelines — directly reducing clinical data
+                        exchange latency.</li>
+                    <li><strong>Automated Azure infrastructure provisioning</strong> end-to-end via IaC (Bicep),
+                        deploying Function Apps, Logic Apps, Event Grid, and Event Hub — eliminating
+                        <strong>~4 hrs of manual setup per environment</strong> across 2 cloud environments.</li>
+                    <li><strong>Delivered telemedicine feature</strong> using Azure Communication Services — video room
+                        generation, webhook-driven patient notifications, supporting <strong>20–100 concurrent
+                            users</strong> at initial rollout.</li>
+                    <li><strong>Built automated PDF reporting pipeline</strong>: cron-scheduled daily hospital
+                        summaries uploaded to S3 with pre-signed URLs and distributed via Kafka to downstream
+                        notification services.</li>
+                    <li><strong>Deployed AWS infrastructure</strong> via CloudFormation IaC; managed HIPAA-sensitive
+                        EHR document storage in S3 with fine-grained role-based access policies.</li>
+                    <li><strong>Mentored 1–2 junior engineers</strong> in a lean 3-person squad — conducting code
+                        reviews, accelerating onboarding on NestJS and Azure patterns, and raising overall
+                        team delivery velocity.</li>
+                </ul>
+            </div>
+
+            <!-- Job 2 -->
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title">Software Engineer — Full Stack</div>
+                    <div class="job-date">Aug 2021 – Nov 2022 · 1 yr 4 mo</div>
+                </div>
+                <div class="job-company">AES Technologies India Pvt. Ltd.</div>
+                <div class="job-stack">React · Angular · Node.js · OAuth 2.0 · Singpass API · React Native · JWT</div>
+                <ul class="bullets">
+                    <li><strong>Spearheaded R&amp;D and production integration</strong> of Singapore's national
+                        Singpass API — delivering government-grade digital identity authentication across
+                        <strong>1–2 production applications</strong>, meeting stringent security and compliance
+                        requirements.</li>
+                    <li><strong>Engineered scalable REST APIs</strong> (Node.js / Express) with JWT and OAuth 2.0 —
+                        built for high-availability with Singapore government security standards as the
+                        compliance baseline.</li>
+                    <li><strong>Delivered high-performance React and Angular UIs</strong> (Hooks, Redux, RxJS)
+                        across multiple production applications — optimised rendering, mobile-responsive,
+                        and cross-browser compatible.</li>
+                    <li><strong>Published 3 internal npm packages</strong> as shared organisation libraries,
+                        standardising component usage across teams and <strong>eliminating redundant development
+                            effort</strong> on repeated UI patterns.</li>
+                    <li><strong>Resolved critical React Native bugs</strong> affecting mobile app stability, shipping
+                        fixes across <strong>2 product releases</strong> in close coordination with QA and
+                        business stakeholders.</li>
+                </ul>
+            </div>
+
+            <!-- Job 3 -->
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title">Software Developer — Full Stack</div>
+                    <div class="job-date">Jun 2020 – Jul 2021 · 1 yr 2 mo</div>
+                </div>
+                <div class="job-company">DDL Tech Solutions Pvt. Ltd. (Startup)</div>
+                <div class="job-stack">MERN · MEAN · SwiftUI · JWT · MongoDB · REST APIs</div>
+                <ul class="bullets">
+                    <li><strong>Built end-to-end enterprise web applications</strong> using MERN and MEAN stacks for
+                        multiple SME clients across accounting and operations domains, owning the full stack
+                        from schema to deployment.</li>
+                    <li><strong>Designed performant MongoDB schemas</strong> and optimised NoSQL queries for
+                        high-frequency billing workloads — improving data retrieval speed for invoice-heavy
+                        operations.</li>
+                    <li><strong>Engineered a reusable billing and invoice engine</strong> with role-based access
+                        control — adopted across multiple client platforms as a core accounting module.</li>
+                    <li><strong>Initiated iOS app development</strong> in SwiftUI (MVVM architecture), extending
+                        platform reach to mobile and implementing JWT role-based access control across
+                        web and mobile layers.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="section">
+            <div class="section-title">Notable Projects</div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-name">MCP Expense Tracker (AI-Powered)</div>
+                    <div class="project-stack">TypeScript · MCP SDK · Claude AI API · Node.js · SSE</div>
+                    <div class="project-desc">
+                        Designed and shipped a <strong>production MCP server</strong> integrating Claude AI as a
+                        natural-language interface for personal finance tracking. Defined custom tool schemas
+                        (<code>add_transaction</code>, <code>read_transactions</code>), deployed with SSE transport
+                        via supergateway + ngrok. Published as open-source on GitHub.
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-name">Open-Source npm Packages (3 Published)</div>
+                    <div class="project-stack">React · Angular · TypeScript · JavaScript · npm</div>
+                    <div class="project-desc">
+                        Authored and published 3 production npm packages: <strong>satti-table</strong> (Angular data
+                        table), <strong>react-satti-chart</strong> (React bar chart),
+                        <strong>react-pendulum-loader</strong> (CSS animation loader). Collectively
+                        <strong>1,000–5,000+ downloads</strong> across the developer community.
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-name">Multi-Tenant Healthcare Platform</div>
+                    <div class="project-stack">NestJS · FHIR R4 · Azure · AWS S3 · Kafka · Aidbox</div>
+                    <div class="project-desc">
+                        Led backend architecture for a <strong>FHIR R4–compliant multi-tenant EHR platform</strong>
+                        serving 3–5 hospital tenants — with video consultation, Kafka-driven event pipelines,
+                        automated PDF reporting, and Aidbox-based clinical data exchange.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EDUCATION + CERTS -->
+        <div class="section">
+            <div class="section-title">Education &amp; Certifications</div>
+            <div class="two-col">
+                <div>
+                    <div class="edu-item" style="margin-bottom:5px">
+                        <div class="degree">Master of Computer Applications (MCA)</div>
+                        <div class="school">KLN College of Engineering, Madurai &nbsp;·&nbsp; 2018–2020</div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="degree">B.Sc. Information Technology</div>
+                        <div class="school">Sourashtra College of Arts &amp; Science, Madurai &nbsp;·&nbsp; 2014–2017
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="cert-item">Azure Developer Associate (AZ-204) — <em style="color:var(--soft)">add when obtained</em></div>
+                    <div class="cert-item">AWS Solutions Architect Associate — <em style="color:var(--soft)">add when obtained</em></div>
+                    <div class="cert-item">AI Engineering — MCP, RAG, Multi-Agent Orchestration (Self-directed, 2025–26)</div>
+                    <div class="cert-item">Open-source contributor — 3 published npm packages · 1,000–5,000+ downloads</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
