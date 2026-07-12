@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karthick SG — Senior Full-Stack Developer</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #0f1117;
+            --mid: #374151;
+            --soft: #6b7280;
+            --rule: #e5e7eb;
+            --accent: #1d4ed8;
+            --accent-light: #eff6ff;
+            --page: #ffffff;
+        }
+
+        body {
+            background: #d1d5db;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 10.5pt;
+            line-height: 1.55;
+            color: var(--ink);
+        }
+
+        .page {
+            background: var(--page);
+            width: 210mm;
+            margin: 12mm auto;
+            padding: 13mm 16mm;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+        }
+
+        .header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 12px;
+            border-bottom: 2.5px solid var(--ink);
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+        }
+
+        .header-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 28pt;
+        }
+
+        .header-title {
+            font-size: 10pt;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .header-contacts {
+            text-align: right;
+            font-size: 8.8pt;
+            color: var(--mid);
+        }
+
+        .summary-box {
+            background: var(--accent-light);
+            border-left: 3px solid var(--accent);
+            padding: 8px 12px;
+            margin-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 7.5pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 6px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px 14px;
+        }
+
+        .skill-item {
+            font-size: 9pt;
+            color: var(--mid);
+        }
+
+        .job {
+            margin-bottom: 10px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .job-title {
+            font-weight: 700;
+        }
+
+        .job-company {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        ul.bullets {
+            list-style: none;
+        }
+
+        ul.bullets li {
+            padding-left: 12px;
+            position: relative;
+            font-size: 9.2pt;
+        }
+
+        ul.bullets li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @media print {
+            html, body {
+                background: white;
+                height: 100%;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                padding: 7mm 12mm;
+                /* Prevent any overflow spilling onto a second page */
+                overflow: hidden;
+            }
+
+            /* Tighten vertical spacing to help fit single page */
+            .header {
+                margin-bottom: 7px;
+                padding-bottom: 6px;
+            }
+
+            .summary-box {
+                padding: 6px 10px;
+                margin-bottom: 7px;
+            }
+
+            .section {
+                margin-bottom: 7px;
+            }
+
+            .section-title {
+                margin-bottom: 4px;
+            }
+
+            .job {
+                margin-bottom: 7px;
+            }
+
+            ul.bullets li {
+                font-size: 8.8pt;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- HEADER -->
+        <div class="header">
+            <div>
+                <div class="header-name">Karthick SG</div>
+                <div class="header-title">
+                    Senior Full-Stack Developer | MERN Stack &amp; AI Integration
+                </div>
+            </div>
+
+            <div class="header-contacts">
+                karthisg.dev@gmail.com<br>
+                +91 90951 69428 · India (Open to US Remote)<br>
+                linkedin.com/in/karthisgdotsg<br>
+                github.com/karthisgk
+            </div>
+        </div>
+
+        <!-- SUMMARY -->
+        <div class="summary-box">
+            <p>
+                Senior Full-Stack Developer with <strong>5+ years</strong> of experience building and maintaining
+                high-availability <strong>MERN stack applications (MongoDB, Express.js, React, Node.js)</strong>.
+                Expertise in developing <strong>secure, scalable RESTful APIs</strong>, building <strong>reusable React components</strong> with consistent cross-browser UX, and modeling performance-optimized MongoDB databases.
+                Proven experience integrating <strong>AI-driven enhancements</strong> (Claude, Ollama) while maintaining data privacy, troubleshooting production issues, writing clean/testable code, and automating CI/CD pipelines to cut release cycles by <strong>83%</strong>.
+                Strong collaborator aligned with QA, design, and product goals, committed to code reviews and clear documentation.
+            </p>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="section">
+            <div class="section-title">Core Skills</div>
+
+            <div class="skills-grid">
+                <div class="skill-item"><strong>Languages:</strong> JavaScript, TypeScript</div>
+                <div class="skill-item"><strong>Frontend:</strong> React, Redux, Reusable UI Components</div>
+                <div class="skill-item"><strong>Backend:</strong> Node.js, Express.js, NestJS</div>
+
+                <div class="skill-item"><strong>Databases:</strong> MongoDB (Modeling &amp; Query Tuning)</div>
+                <div class="skill-item"><strong>Security &amp; Auth:</strong> JWT, Session Auth, OAuth2</div>
+                <div class="skill-item"><strong>DevOps &amp; Git:</strong> Git-based Collaboration, CI/CD</div>
+
+                <div class="skill-item"><strong>AI Integration:</strong> Claude API, Ollama, Data Privacy</div>
+                <div class="skill-item"><strong>Architecture:</strong> RESTful APIs, Microservices</div>
+                <div class="skill-item"><strong>Messaging:</strong> Kafka, Event-Driven Systems</div>
+
+                <div class="skill-item"><strong>Cloud:</strong> Azure Cloud, AWS Cloud</div>
+                <div class="skill-item"><strong>Engineering Standards:</strong> Clean &amp; Testable Code</div>
+                <div class="skill-item"><strong>Collaboration:</strong> Product, Design &amp; QA Alignment</div>
+            </div>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div class="section">
+            <div class="section-title">Professional Experience</div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title">Senior Software Engineer (MERN &amp; AI)</div>
+                    <div>2022 – Present</div>
+                </div>
+                <div class="job-company">Techversant Infotech</div>
+
+                <ul class="bullets">
+                    <li>Developed and maintained scalable MERN stack web applications; built reusable, responsive React UI components.</li>
+                    <li>Designed secure, scalable Express/Node.js REST APIs and implemented JWT and session-based authentication patterns.</li>
+                    <li>Modeled MongoDB schemas and optimized queries/indexes, substantially reducing database response latency.</li>
+                    <li>Integrated AI APIs (Claude, Ollama) to deliver intelligent enhancements while upholding data privacy standards.</li>
+                    <li>Wrote clean, testable code, led code reviews, and automated CI/CD pipelines to cut release times by <strong>83%</strong>.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title">Software Engineer — Full Stack</div>
+                    <div>2021 – 2022</div>
+                </div>
+                <div class="job-company">AES Technologies</div>
+
+                <ul class="bullets">
+                    <li>Built responsive, high-performance React frontends and published reusable UI components for team-wide use.</li>
+                    <li>Engineered secure Node.js/Express REST APIs with JWT and OAuth 2.0, integrating Singapore's national Singpass API.</li>
+                    <li>Maintained Git-based collaborative workflows, refined technical documentation, and troubleshot production bugs.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title">Software Developer — MERN Stack</div>
+                    <div>2020 – 2021</div>
+                </div>
+                <div class="job-company">DDL Tech Solutions</div>
+
+                <ul class="bullets">
+                    <li>Developed full-stack web applications using MERN stack, owning the lifecycle from schema to production deployment.</li>
+                    <li>Designed MongoDB database schemas and optimized NoSQL queries for intensive customer billing workloads.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="section">
+            <div class="section-title">Key Projects</div>
+
+            <ul class="bullets">
+                <li><strong>AI Expense Tracker:</strong> Built an AI-driven service using Node.js and Claude AI API for secure, natural-language expense automation.</li>
+                <li><strong>AI Telegram Assistant:</strong> Created an LLM assistant using n8n and Ollama, demonstrating local AI execution and data privacy.</li>
+                <li><strong>MERN Stack Platform:</strong> Architected a multi-tenant Node.js microservices backend and optimized MongoDB data storage.</li>
+            </ul>
+
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="section">
+            <div class="section-title">Education</div>
+
+            <p><strong>MCA</strong> – KLN College of Engineering</p>
+            <p><strong>B.Sc IT</strong> – Sourashtra College</p>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
