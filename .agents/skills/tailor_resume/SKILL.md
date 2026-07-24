@@ -50,11 +50,17 @@ Tailor the text content of both resumes to align with the extracted JD requireme
 
 ### 5. Write the Files to Target Directories
 Save the tailored resumes under a company or role-specific subdirectory:
-* Determine a folder name from the company or role (e.g., `resume/infosus/` or `resume/<normalized_role_name>/`).
+* Determine a folder name from the company or role (e.g., `resume/updated/infosus/` or `resume/updated/<normalized_role_name>/`).
 * Write the detailed version to `<target_dir>/two-page/index.html`.
 * Write the condensed version to `<target_dir>/one-page/index.html`.
 
-### 6. Verify and Document
+### 6. Update Navigation Hub (`nav.html`)
+* Whenever new tailored resumes are generated:
+  * Open `nav.html` at the repository root ([nav.html](file:///Users/karthicksg/Documents/karthisgk_git/karthisgk.github.io/nav.html)).
+  * Add card(s) under the **Company-Tailored Resumes (`@direc`)** section for the new 2-page and/or 1-page resume variants with company tags, tech badges, directory path (`resume/<company>/...`), and launch links.
+  * Add the new resume files to the **Directory File Index (`@direc`)** table in `nav.html`.
+
+### 7. Verify and Document
 * Validate that both files are properly formatted HTML documents and do not contain syntax errors or stray characters.
 * Verify that the print previews render correctly (especially that the 1-page version fits cleanly onto exactly one page).
-* Provide the user with links to the generated files and a walkthrough detailing the content optimizations.
+* Provide the user with links to the generated files, updated `nav.html`, and a walkthrough detailing the content optimizations.

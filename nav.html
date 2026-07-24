@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karthick SG — Navigation & Career Hub</title>
+  <meta name="description" content="Central navigation portal for Karthick SG's master resumes, company-tailored resume directories (@direc), and interview preparation study portals.">
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      /* Dark Theme (Default) */
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-card: rgba(30, 41, 59, 0.7);
+      --bg-card-hover: rgba(51, 65, 85, 0.8);
+      --border-color: rgba(255, 255, 255, 0.1);
+      --border-glow: rgba(56, 189, 248, 0.3);
+      
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      
+      --accent-cyan: #38bdf8;
+      --accent-blue: #3b82f6;
+      --accent-purple: #8b5cf6;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      
+      --glass-bg: rgba(15, 23, 42, 0.75);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      --badge-bg: rgba(56, 189, 248, 0.12);
+      --badge-text: #38bdf8;
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-card-hover: #f1f5f9;
+      --border-color: rgba(0, 0, 0, 0.08);
+      --border-glow: rgba(37, 99, 235, 0.2);
+      
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      
+      --accent-cyan: #0284c7;
+      --accent-blue: #2563eb;
+      --accent-purple: #7c3aed;
+      --accent-emerald: #059669;
+      --accent-amber: #d97706;
+      
+      --glass-bg: rgba(255, 255, 255, 0.85);
+      --glass-border: rgba(0, 0, 0, 0.08);
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+      --badge-bg: rgba(2, 132, 199, 0.1);
+      --badge-text: #0284c7;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* Ambient background glow */
+    .bg-glow {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 60%),
+                  radial-gradient(circle at 80% 40%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Top Header Bar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 0;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 20px;
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+    }
+
+    .brand-text h1 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-text p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    .nav-btn:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    /* Hero Banner */
+    .hero {
+      padding: 48px 0 32px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin: 0 auto 32px;
+    }
+
+    /* Controls Bar: Search & Filter Tabs */
+    .controls-bar {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin-bottom: 40px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .search-wrapper {
+      position: relative;
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .search-wrapper i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 14px 10px 40px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 14px;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .tab-btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-primary);
+      background: var(--bg-card-hover);
+    }
+
+    .tab-btn.active {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+    }
+
+    /* Section Styling */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .section-title i {
+      color: var(--accent-cyan);
+    }
+
+    .section-count {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 12px;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+    }
+
+    /* Grid Layouts */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    /* Hub Cards */
+    .hub-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hub-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .hub-card:hover {
+      border-color: var(--border-glow);
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+    }
+
+    .hub-card:hover::before {
+      opacity: 1;
+    }
+
+    .card-top {
+      margin-bottom: 16px;
+    }
+
+    .card-header-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .card-icon-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .icon-prep { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); }
+    .icon-infosys { background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); }
+    .icon-amex { background: rgba(245, 158, 11, 0.15); color: var(--accent-amber); }
+    .icon-master { background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); }
+
+    .card-title-group h3 {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .card-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .company-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tag-infosys { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+    .tag-amex { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+    .tag-master { background: rgba(139, 92, 246, 0.2); color: #c084fc; }
+
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .tech-tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+
+    .card-action-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+    }
+
+    .card-action-btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+
+    .card-action-secondary {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      box-shadow: none;
+    }
+
+    .card-action-secondary:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      background: var(--bg-card-hover);
+    }
+
+    /* Directory Table Section (@direc) */
+    .table-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 48px;
+      overflow-x: auto;
+    }
+
+    .direc-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    .direc-table th {
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--border-color);
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+
+    .direc-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: middle;
+    }
+
+    .direc-table tr:hover td {
+      background: var(--bg-card-hover);
+    }
+
+    .path-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--accent-cyan);
+      background: rgba(56, 189, 248, 0.08);
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+
+    .table-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .table-link-btn:hover {
+      background: var(--accent-blue);
+      color: #ffffff;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* Mobile Responsive Adjustments */
+    @media (max-width: 768px) {
+      .hero h2 { font-size: 26px; }
+      .controls-bar { flex-direction: column; align-items: stretch; }
+      .filter-tabs { width: 100%; justify-content: flex-start; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <i class="fa-solid fa-compass"></i>
+        </div>
+        <div class="brand-text">
+          <h1>Karthick SG</h1>
+          <p>Career Hub & Navigation Directory</p>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <a href="index.html" class="nav-btn">
+          <i class="fa-solid fa-house"></i>
+          <span>Portfolio</span>
+        </a>
+        <a href="interview_prep/infosys_mern/index.html" class="nav-btn">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>Prep Portal</span>
+        </a>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode" id="themeBtn">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Hero Banner -->
+    <section class="hero">
+      <div class="hero-badge">
+        <i class="fa-solid fa-folder-tree"></i> Directory Map (@direc) & Study Hubs
+      </div>
+      <h2>Resource Launchpad & Navigation</h2>
+      <p>Direct landing links to all updated resumes, company-tailored directories (`@direc`), and interactive interview preparation courses.</p>
+    </section>
+
+    <!-- Controls Bar: Live Search & Filters -->
+    <div class="controls-bar">
+      <div class="search-wrapper">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search resumes, companies (Infosys, AMEX), tech stacks..." onkeyup="filterItems()">
+      </div>
+
+      <div class="filter-tabs">
+        <button class="tab-btn active" onclick="setFilter('all', this)">All Resources</button>
+        <button class="tab-btn" onclick="setFilter('prep', this)"><i class="fa-solid fa-graduation-cap"></i> Interview Prep</button>
+        <button class="tab-btn" onclick="setFilter('tailored', this)"><i class="fa-solid fa-building"></i> Tailored Resumes (@direc)</button>
+        <button class="tab-btn" onclick="setFilter('master', this)"><i class="fa-solid fa-file-user"></i> Master Resumes</button>
+      </div>
+    </div>
+
+    <!-- Section 1: Interview Prep Hubs -->
+    <section class="resource-section" id="prep-section">
+      <div class="section-header">
+        <div class="section-title">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>Interview Preparation LMS Portals</span>
+        </div>
+        <span class="section-count">1 Active Course</span>
+      </div>
+
+      <div class="grid">
+        <!-- Infosys MERN Prep Card -->
+        <div class="hub-card" data-category="prep" data-keywords="infosys mern fullstack react node mongodb express javascript interview study lms">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-title">
+                <div class="card-icon icon-prep">
+                  <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <div class="card-title-group">
+                  <h3>Infosys MERN Prep Course</h3>
+                  <div class="card-subtitle">interview_prep/infosys_mern/</div>
+                </div>
+              </div>
+              <span class="company-tag tag-infosys">Infosys</span>
+            </div>
+
+            <p class="card-desc">Interactive single-page LMS study dashboard tailored for Infosys MERN Full-Stack Developer interviews. Includes 7 modules, Q&A accordions, 3D flashcards, quizzes, and code blocks.</p>
+
+            <div class="tags-container">
+              <span class="tech-tag">MERN Stack</span>
+              <span class="tech-tag">React.js</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">MongoDB</span>
+              <span class="tech-tag">Express.js</span>
+              <span class="tech-tag">System Design</span>
+              <span class="tech-tag">Quizzes</span>
+            </div>
+          </div>
+
+          <a href="interview_prep/infosys_mern/index.html" class="card-action-btn">
+            <span>Launch Prep Portal</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Company Tailored Resumes (@direc) -->
+    <section class="resource-section" id="tailored-section">
+      <div class="section-header">
+        <div class="section-title">
+          <i class="fa-solid fa-building"></i>
+          <span>Company-Tailored Resumes (@direc)</span>
+        </div>
+        <span class="section-count">4 Directories</span>
+      </div>
+
+      <div class="grid">
+        <!-- Infosys 2-Page Resume -->
+        <div class="hub-card" data-category="tailored" data-keywords="infosys mern 2-page two-page resume directory direc resume/infosus/two-page/">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-title">
+                <div class="card-icon icon-infosys">
+                  <i class="fa-solid fa-file-contract"></i>
+                </div>
+                <div class="card-title-group">
+                  <h3>Infosys MERN — 2-Page Resume</h3>
+                  <div class="card-subtitle">resume/infosus/two-page/</div>
+                </div>
+              </div>
+              <span class="company-tag tag-infosys">Infosys</span>
+            </div>
+
+            <p class="card-desc">Tailored 2-page detailed resume highlighting Infosys MERN Full-Stack requirements, microservices architecture, AI feature delivery, and enterprise scalability.</p>
+
+            <div class="tags-container">
+              <span class="tech-tag">2-Page Format</span>
+              <span class="tech-tag">Infosys Tailored</span>
+              <span class="tech-tag">MERN Developer</span>
+              <span class="tech-tag">Azure & AWS</span>
+            </div>
+          </div>
+
+          <a href="resume/infosus/two-page/index.html" class="card-action-btn card-action-secondary">
+            <span>View 2-Page Infosys Resume</span>
+            <i class="fa-solid fa-external-link"></i>
+          </a>
+        </div>
+
+        <!-- Infosys 1-Page Resume -->
+        <div class="hub-card" data-category="tailored" data-keywords="infosys mern 1-page one-page resume directory direc resume/infosus/one-page/">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-title">
+                <div class="card-icon icon-infosys">
+                  <i class="fa-solid fa-file-lines"></i>
+                </div>
+                <div class="card-title-group">
+                  <h3>Infosys MERN — 1-Page Resume</h3>
+                  <div class="card-subtitle">resume/infosus/one-page/</div>
+                </div>
+              </div>
+              <span class="company-tag tag-infosys">Infosys</span>
+            </div>
+
+            <p class="card-desc">High-density 1-page executive resume customized for Infosys full-stack engineering roles with emphasis on rapid deployment and core competencies.</p>
+
+            <div class="tags-container">
+              <span class="tech-tag">1-Page Executive</span>
+              <span class="tech-tag">Infosys Tailored</span>
+              <span class="tech-tag">Compact</span>
+              <span class="tech-tag">MERN Stack</span>
+            </div>
+          </div>
+
+          <a href="resume/infosus/one-page/index.html" class="card-action-btn card-action-secondary">
+            <span>View 1-Page Infosys Resume</span>
+            <i class="fa-solid fa-external-link"></i>
+          </a>
+        </div>
+
+        <!-- AMEX 2-Page Resume -->
+        <div class="hub-card" data-category="tailored" data-keywords="amex american express 2-page two-page resume directory direc resume/amex/two-page/">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-title">
+                <div class="card-icon icon-amex">
+                  <i class="fa-solid fa-file-contract"></i>
+                </div>
+                <div class="card-title-group">
+                  <h3>AMEX — 2-Page Resume</h3>
+                  <div class="card-subtitle">resume/amex/two-page/</div>
+                </div>
+              </div>
+              <span class="company-tag tag-amex">AMEX</span>
+            </div>
+
+            <p class="card-desc">Custom-tailored 2-page resume emphasizing American Express FinTech domain expertise, security compliance, cloud microservices, and OAuth 2.0.</p>
+
+            <div class="tags-container">
+              <span class="tech-tag">2-Page Format</span>
+              <span class="tech-tag">AMEX Tailored</span>
+              <span class="tech-tag">FinTech & Security</span>
+              <span class="tech-tag">Node.js / React</span>
+            </div>
+          </div>
+
+          <a href="resume/amex/two-page/index.html" class="card-action-btn card-action-secondary">
+            <span>View 2-Page AMEX Resume</span>
+            <i class="fa-solid fa-external-link"></i>
+          </a>
+        </div>
+
+        <!-- AMEX 1-Page Resume -->
+        <div class="hub-card" data-category="tailored" data-keywords="amex american express 1-page one-page resume directory direc resume/amex/one-page/">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-title">
+                <div class="card-icon icon-amex">
+                  <i class="fa-solid fa-file-lines"></i>
+                </div>
+                <div class="card-title-group">
+                  <h3>AMEX — 1-Page Resume</h3>
+                  <div class="card-subtitle">resume/amex/one-page/</div>
+                </div>
+              </div>
+              <span class="company-tag tag-amex">AMEX</span>
+            </div>
+
+            <p class="card-desc">Compact single-page resume layout optimized for American Express recruitment screening and tech lead evaluations.</p>
+
+            <div class="tags-container">
+              <span class="tech-tag">1-Page Executive</span>
+              <span class="tech-tag">AMEX Tailored</span>
+              <span class="tech-tag">FinTech</span>
+              <span class="tech-tag">Full Stack</span>
+            </div>
+          </div>
+
+          <a href="resume/amex/one-page/index.html" class="card-action-btn card-action-secondary">
+            <span>View 1-Page AMEX Resume</span>
+            <i class="fa-solid fa-external-link"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Master Resumes & Web Profile -->
+    <section class="resource-section" id="master-section">
+      <div class="section-header">
+        <div class="section-title">
+          <i class="fa-solid fa-file-user"></i>
+          <span>Master Resumes & Main Portfolio</span>
+        </div>
+        <span class="section-count">4 Versions</span>
+      </div>
+
+      <div class="grid">
+        <!-- Master 2-Page Resume (new.html) -->
+        <div class="hub-card" data-category="master" data-keywords="master 2-page new.html resume pdf format full stack">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-title">
+                <div class="card-icon icon-master">
+                  <i class="fa-solid fa-file-pdf"></i>
+                </div>
+                <div class="card-title-group">
+                  <h3>Master 2-Page Resume</h3>
+                  <div class="card-subtitle">resume/new.html</div>
+                </div>
+              </div>
+              <span class="company-tag tag-master">Master CV</span>
+            </div>
+
+            <p class="card-desc">The primary master 2-page resume with clean typography, full career achievements, npm packages, and AI engineering credentials.</p>
+
+            <div class="tags-container">
+              <span class="tech-tag">Master 2-Page</span>
+              <span class="tech-tag">Print / PDF Ready</span>
+              <span class="tech-tag">Full Stack & AI</span>
+            </div>
+          </div>
+
+          <a href="resume/new.html" class="card-action-btn card-action-secondary">
+            <span>Open Master 2-Page CV</span>
+            <i class="fa-solid fa-external-link"></i>
+          </a>
+        </div>
+
+        <!-- Master 1-Page Resume (v2.html) -->
+        <div class="hub-card" data-category="master" data-keywords="master 1-page v2.html resume compact one-page">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-title">
+                <div class="card-icon icon-master">
+                  <i class="fa-solid fa-file-code"></i>
+                </div>
+                <div class="card-title-group">
+                  <h3>Master 1-Page Resume</h3>
+                  <div class="card-subtitle">resume/v2.html</div>
+                </div>
+              </div>
+              <span class="company-tag tag-master">Master CV</span>
+            </div>
+
+            <p class="card-desc">Sleek, high-density 1-page CV version ideal for quick reading and single-page ATS review submission.</p>
+
+            <div class="tags-container">
+              <span class="tech-tag">Master 1-Page</span>
+              <span class="tech-tag">Compact</span>
+              <span class="tech-tag">PDF Ready</span>
+            </div>
+          </div>
+
+          <a href="resume/v2.html" class="card-action-btn card-action-secondary">
+            <span>Open Master 1-Page CV</span>
+            <i class="fa-solid fa-external-link"></i>
+          </a>
+        </div>
+
+        <!-- Interactive Web Resume (resume/index.html) -->
+        <div class="hub-card" data-category="master" data-keywords="web resume interactive timeline resume/index.html">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-title">
+                <div class="card-icon icon-master">
+                  <i class="fa-solid fa-globe"></i>
+                </div>
+                <div class="card-title-group">
+                  <h3>Interactive Web Resume</h3>
+                  <div class="card-subtitle">resume/index.html</div>
+                </div>
+              </div>
+              <span class="company-tag tag-master">Web Profile</span>
+            </div>
+
+            <p class="card-desc">Full interactive web resume page with timeline view, detailed work experience, skills breakdown, and social contact links.</p>
+
+            <div class="tags-container">
+              <span class="tech-tag">Interactive Web</span>
+              <span class="tech-tag">Timeline View</span>
+              <span class="tech-tag">Full Profile</span>
+            </div>
+          </div>
+
+          <a href="resume/index.html" class="card-action-btn card-action-secondary">
+            <span>Launch Web Resume</span>
+            <i class="fa-solid fa-external-link"></i>
+          </a>
+        </div>
+
+        <!-- Main Website (index.html) -->
+        <div class="hub-card" data-category="master" data-keywords="home main portfolio website index.html">
+          <div class="card-top">
+            <div class="card-header-row">
+              <div class="card-icon-title">
+                <div class="card-icon icon-prep">
+                  <i class="fa-solid fa-house"></i>
+                </div>
+                <div class="card-title-group">
+                  <h3>Personal Portfolio Website</h3>
+                  <div class="card-subtitle">index.html</div>
+                </div>
+              </div>
+              <span class="company-tag tag-infosys">Home</span>
+            </div>
+
+            <p class="card-desc">Main personal website featuring career highlights, academic background, project showcase, and direct contact options.</p>
+
+            <div class="tags-container">
+              <span class="tech-tag">Portfolio Home</span>
+              <span class="tech-tag">Career & Academic</span>
+              <span class="tech-tag">Contact Form</span>
+            </div>
+          </div>
+
+          <a href="index.html" class="card-action-btn card-action-secondary">
+            <span>Visit Main Website</span>
+            <i class="fa-solid fa-external-link"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Directory Explorer Table (@direc) -->
+    <section>
+      <div class="section-header">
+        <div class="section-title">
+          <i class="fa-solid fa-folder-open"></i>
+          <span>Directory File Index (@direc)</span>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <table class="direc-table">
+          <thead>
+            <tr>
+              <th>Resource Name</th>
+              <th>Category</th>
+              <th>Directory Path (@direc)</th>
+              <th>Format</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Infosys MERN Prep Portal</strong></td>
+              <td>Interview Prep</td>
+              <td><span class="path-code">/interview_prep/infosys_mern/index.html</span></td>
+              <td>Interactive LMS</td>
+              <td><a href="interview_prep/infosys_mern/index.html" class="table-link-btn"><i class="fa-solid fa-play"></i> Open</a></td>
+            </tr>
+            <tr>
+              <td><strong>Infosys MERN 2-Page Resume</strong></td>
+              <td>Tailored Resume</td>
+              <td><span class="path-code">/resume/infosus/two-page/index.html</span></td>
+              <td>HTML / Print</td>
+              <td><a href="resume/infosus/two-page/index.html" class="table-link-btn"><i class="fa-solid fa-eye"></i> View</a></td>
+            </tr>
+            <tr>
+              <td><strong>Infosys MERN 1-Page Resume</strong></td>
+              <td>Tailored Resume</td>
+              <td><span class="path-code">/resume/infosus/one-page/index.html</span></td>
+              <td>HTML / Compact</td>
+              <td><a href="resume/infosus/one-page/index.html" class="table-link-btn"><i class="fa-solid fa-eye"></i> View</a></td>
+            </tr>
+            <tr>
+              <td><strong>AMEX 2-Page Tailored Resume</strong></td>
+              <td>Tailored Resume</td>
+              <td><span class="path-code">/resume/amex/two-page/index.html</span></td>
+              <td>HTML / Print</td>
+              <td><a href="resume/amex/two-page/index.html" class="table-link-btn"><i class="fa-solid fa-eye"></i> View</a></td>
+            </tr>
+            <tr>
+              <td><strong>AMEX 1-Page Tailored Resume</strong></td>
+              <td>Tailored Resume</td>
+              <td><span class="path-code">/resume/amex/one-page/index.html</span></td>
+              <td>HTML / Compact</td>
+              <td><a href="resume/amex/one-page/index.html" class="table-link-btn"><i class="fa-solid fa-eye"></i> View</a></td>
+            </tr>
+            <tr>
+              <td><strong>Master Two-Page Resume</strong></td>
+              <td>Master CV</td>
+              <td><span class="path-code">/resume/new.html</span></td>
+              <td>HTML / PDF</td>
+              <td><a href="resume/new.html" class="table-link-btn"><i class="fa-solid fa-eye"></i> View</a></td>
+            </tr>
+            <tr>
+              <td><strong>Master One-Page Resume</strong></td>
+              <td>Master CV</td>
+              <td><span class="path-code">/resume/v2.html</span></td>
+              <td>HTML / PDF</td>
+              <td><a href="resume/v2.html" class="table-link-btn"><i class="fa-solid fa-eye"></i> View</a></td>
+            </tr>
+            <tr>
+              <td><strong>Interactive Web Resume</strong></td>
+              <td>Master CV</td>
+              <td><span class="path-code">/resume/index.html</span></td>
+              <td>Web Page</td>
+              <td><a href="resume/index.html" class="table-link-btn"><i class="fa-solid fa-eye"></i> View</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 Karthick SG. All resources and tailored resume directories (@direc) updated.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Theme Toggle Functionality
+    function toggleTheme() {
+      const html = document.documentElement;
+      const themeBtn = document.getElementById('themeBtn');
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('hub_theme', newTheme);
+      
+      themeBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
+    }
+
+    // Initialize saved theme
+    (function initTheme() {
+      const savedTheme = localStorage.getItem('hub_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      const themeBtn = document.getElementById('themeBtn');
+      if (themeBtn) {
+        themeBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
+      }
+    })();
+
+    // Filter by Category
+    function setFilter(category, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.hub-card');
+      const sections = document.querySelectorAll('.resource-section');
+
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Filter input reset if tab changed
+      filterItems();
+    }
+
+    // Real-Time Search Filter
+    function filterItems() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const activeTab = document.querySelector('.tab-btn.active');
+      const activeCategory = activeTab ? activeTab.innerText.toLowerCase() : 'all';
+
+      const cards = document.querySelectorAll('.hub-card');
+
+      cards.forEach(card => {
+        const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+        const textContent = card.innerText.toLowerCase();
+        const cardCat = card.getAttribute('data-category');
+
+        let matchesTab = true;
+        if (activeCategory.includes('prep') && cardCat !== 'prep') matchesTab = false;
+        if (activeCategory.includes('tailored') && cardCat !== 'tailored') matchesTab = false;
+        if (activeCategory.includes('master') && cardCat !== 'master') matchesTab = false;
+
+        let matchesSearch = query === '' || keywords.includes(query) || textContent.includes(query);
+
+        if (matchesTab && matchesSearch) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

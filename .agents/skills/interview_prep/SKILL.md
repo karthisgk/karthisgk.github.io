@@ -87,7 +87,14 @@ The generated prep portal MUST contain rich, detailed, role-specific content div
 
 ---
 
-## 4. Verification & Output Deliverables
+## 4. Update Navigation Hub (`nav.html`)
+1. Whenever a new interview prep course portal is generated (`interview_prep/<normalized_name>/index.html`):
+   * Open `nav.html` at the repository root ([nav.html](file:///Users/karthicksg/Documents/karthisgk_git/karthisgk.github.io/nav.html)).
+   * Add a new card under the **Interview Preparation LMS Portals** section with course title, company tag, tech tags, directory path, and launch link.
+   * Add a new entry to the **Directory File Index (`@direc`)** table in `nav.html`.
+
+## 5. Verification & Output Deliverables
 1. Write the completed standalone web application to `interview_prep/<normalized_name>/index.html`.
 2. Open/verify the HTML output to ensure all scripts, styles, and interactive tabs work smoothly.
-3. Present a clear summary to the user with a clickable link to the generated prep portal file (`interview_prep/.../index.html`).
+3. Verify that `nav.html` is updated with the new prep portal link.
+4. Present a clear summary to the user with clickable links to the generated prep portal file (`interview_prep/.../index.html`) and `nav.html`.
