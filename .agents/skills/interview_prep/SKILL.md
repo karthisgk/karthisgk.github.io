@@ -41,6 +41,10 @@ The output must be a self-contained, fully interactive, premium online-course da
 * **Design System**: Slate/Navy CSS custom properties (`--bg-primary`, `--bg-secondary`, `--accent-cyan`, `--border-color`) with full dark/light theme toggle.
 * **Typography**: Google Fonts `Inter` + `JetBrains Mono` for code blocks.
 * **Layout**: Left-hand collapsible sidebar navigation (`310px`) with search filter, course modules list, and progress reset; sticky top bar showing overall completion progress (% complete, study time estimate, streak indicator); hero banner with role tags and stat cards.
+* **Mobile & Tablet Responsiveness (Mandatory)**:
+  * **Sidebar Drawer**: On screens `<=992px`, sidebar auto-collapses into a slide-in off-canvas drawer with a semi-transparent backdrop overlay (`.sidebar-overlay`) and an explicit close button (`.sidebar-close-btn`).
+  * **Fluid Breakpoints**: Adaptive padding and font sizing for tablets (`992px`) and smartphones (`640px`/`480px`).
+  * **Component Adaptability**: Accordion headers flex-wrap cleanly on narrow screens; Flashcard grids collapse to a 1-column stack; Code blocks feature horizontal scroll containers (`overflow-x: auto`) with fixed top-right copy buttons; Header title truncates cleanly to prevent toolbar overflow.
 * **Interactive Component Suite (Vanilla JS inside HTML)**:
   * Module/Lesson navigation tab switching without page reload.
   * Interactive checkboxes for marking lessons/topics complete (persisting progress in `localStorage`).

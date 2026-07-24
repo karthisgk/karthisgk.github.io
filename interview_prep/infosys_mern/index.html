@@ -875,13 +875,49 @@
       color: #fb7185;
     }
 
-    /* Responsive */
+    .sidebar-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 95;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar-overlay.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .sidebar-close-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 18px;
+      cursor: pointer;
+      margin-left: auto;
+      padding: 4px;
+      transition: var(--transition);
+    }
+
+    .sidebar-close-btn:hover {
+      color: var(--accent-cyan);
+    }
+
+    /* Responsive Breakpoints */
     @media (max-width: 992px) {
       .sidebar {
         transform: translateX(-100%);
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
       }
       .sidebar.open {
         transform: translateX(0);
+      }
+      .sidebar-close-btn {
+        display: block;
       }
       .main-wrapper {
         margin-left: 0;
@@ -889,10 +925,98 @@
       .toggle-sidebar-btn {
         display: block;
       }
+      .top-header {
+        padding: 0 16px;
+      }
+      .content-container {
+        padding: 20px 16px;
+      }
+      .hero-banner {
+        padding: 20px;
+      }
+      .hero-title {
+        font-size: 22px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-title {
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 140px;
+      }
+      .progress-widget {
+        padding: 4px 10px;
+        gap: 6px;
+      }
+      .progress-bar-container {
+        width: 60px;
+      }
+      .progress-text {
+        font-size: 11px;
+      }
+      .hero-banner {
+        padding: 16px;
+        border-radius: 12px;
+      }
+      .hero-title {
+        font-size: 18px;
+      }
+      .hero-description {
+        font-size: 13px;
+      }
+      .hero-stats {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .stat-card {
+        padding: 10px 14px;
+      }
+      .accordion-header {
+        padding: 14px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .accordion-meta {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .accordion-body {
+        padding: 16px 14px;
+      }
+      .flashcard-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .flashcard {
+        height: 160px;
+      }
+      .code-header {
+        font-size: 11px;
+        padding: 6px 12px;
+      }
+      pre code {
+        padding: 12px 14px;
+        font-size: 12px;
+      }
+      .timeline {
+        padding-left: 20px;
+      }
+      .timeline-step::before {
+        left: -18px;
+      }
+      .checklist-item {
+        padding: 10px;
+      }
     }
   </style>
 </head>
 <body>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
 <div id="app">
   <!-- Sidebar -->
@@ -905,6 +1029,9 @@
         <div class="brand-title">Infosys MERN Prep</div>
         <div class="brand-subtitle">Interview LMS Portal</div>
       </div>
+      <button class="sidebar-close-btn" onclick="toggleSidebar()" aria-label="Close Sidebar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
 
     <div class="sidebar-search">
@@ -1656,7 +1783,12 @@ module.exports = router;</code></pre>
   });
 
   function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('open');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    sidebar.classList.toggle('open');
+    if (overlay) {
+      overlay.classList.toggle('active');
+    }
   }
 
   function switchModule(modId, navEl) {
@@ -1671,7 +1803,10 @@ module.exports = router;</code></pre>
     document.getElementById('currentModuleTitle').innerText = titleText;
 
     if (window.innerWidth <= 992) {
-      document.getElementById('sidebar').classList.remove('open');
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      sidebar.classList.remove('open');
+      if (overlay) overlay.classList.remove('active');
     }
   }
 
