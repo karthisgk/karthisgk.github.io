@@ -37,16 +37,18 @@ Extract and categorize all key requirements:
 ### 3. Design & Develop the Course Web UI (`index.html`)
 The output must be a self-contained, fully interactive, premium online-course dashboard (styled like Educative, Coursera, or Udemy) saved at `interview_prep/<normalized_company_or_role>/index.html`.
 
-#### UI/UX & Design System Requirements:
-* **Layout**: Left-hand collapsible sidebar navigation with course modules; right-hand main content panel; sticky top bar showing overall completion progress (% complete, study time estimate, streak indicator).
-* **Styling & Aesthetics**: Clean modern CSS design system with CSS custom properties (variables), elegant dark/light theme option, crisp typography (e.g., Inter, DM Sans, Fira Code for snippets), vibrant accent colors, badge tags for difficulty (`Easy`, `Medium`, `Hard`, `Must-Know`), and status indicators.
-* **Interactivity (Vanilla JS inside HTML)**:
+#### UI/UX & Design System Requirements (Standard LMS Dashboard Pattern):
+* **Design System**: Slate/Navy CSS custom properties (`--bg-primary`, `--bg-secondary`, `--accent-cyan`, `--border-color`) with full dark/light theme toggle.
+* **Typography**: Google Fonts `Inter` + `JetBrains Mono` for code blocks.
+* **Layout**: Left-hand collapsible sidebar navigation (`310px`) with search filter, course modules list, and progress reset; sticky top bar showing overall completion progress (% complete, study time estimate, streak indicator); hero banner with role tags and stat cards.
+* **Interactive Component Suite (Vanilla JS inside HTML)**:
   * Module/Lesson navigation tab switching without page reload.
   * Interactive checkboxes for marking lessons/topics complete (persisting progress in `localStorage`).
-  * Collapsible/expandable accordions for interview questions and model answers.
-  * Interactive flashcards for quick revision/tech terms.
-  * Tabbed code snippets (e.g. Java / Python / JavaScript / SQL code samples).
-  * Self-assessment quiz widgets / confidence ratings for topics.
+  * 3D Flip Flashcards for rapid concept revision.
+  * Collapsible/expandable accordions for interview questions and model answers with difficulty badges (`Easy`, `Medium`, `Hard`, `Must-Know`).
+  * Code blocks with header bar and 1-click clipboard copy functionality.
+  * Practice quiz widget with immediate visual correct/incorrect feedback.
+  * Real-time search input filtering module contents.
 
 ---
 
