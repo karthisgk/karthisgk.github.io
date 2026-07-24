@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infosys MERN Stack Developer | Technical Interview Prep Portal</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-card: #1e293b;
+      --bg-card-hover: #334155;
+      --bg-accent: #0f766e;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent-blue: #0284c7;
+      --accent-cyan: #06b6d4;
+      --accent-teal: #14b8a6;
+      --accent-indigo: #6366f1;
+      --accent-purple: #a855f7;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --border-color: #334155;
+      --border-focus: #38bdf8;
+      --code-bg: #090d16;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+      --sidebar-width: 310px;
+      --header-height: 70px;
+      --radius: 12px;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f1f5f9;
+      --bg-accent: #0d9488;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --border-color: #e2e8f0;
+      --border-focus: #0284c7;
+      --code-bg: #1e293b;
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text-muted);
+    }
+
+    /* Layout */
+    #app {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-width);
+      background-color: var(--bg-secondary);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+      transition: var(--transition);
+    }
+
+    .sidebar-header {
+      padding: 20px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0284c7, #06b6d4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+    }
+
+    .brand-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .brand-subtitle {
+      font-size: 11px;
+      color: var(--accent-cyan);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sidebar-search {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .search-input-wrapper {
+      position: relative;
+    }
+
+    .search-input-wrapper i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 12px 10px 36px;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 13px;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .search-input:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.25);
+    }
+
+    .module-nav {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 12px;
+    }
+
+    .nav-section-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      font-weight: 700;
+      padding: 0 12px 8px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px;
+      margin-bottom: 6px;
+      border-radius: 10px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+
+    .nav-item:hover {
+      background-color: var(--bg-card-hover);
+      color: var(--text-primary);
+    }
+
+    .nav-item.active {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.15), rgba(6, 182, 212, 0.1));
+      color: var(--accent-cyan);
+      border-color: rgba(6, 182, 212, 0.3);
+      font-weight: 600;
+    }
+
+    .nav-item-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-item-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background-color: var(--bg-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .nav-item.active .nav-item-icon {
+      background-color: var(--accent-cyan);
+      color: white;
+    }
+
+    .badge-count {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 12px;
+      background-color: var(--bg-primary);
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .sidebar-footer {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Main Content */
+    .main-wrapper {
+      margin-left: var(--sidebar-width);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    /* Header */
+    .top-header {
+      height: var(--header-height);
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      backdrop-filter: blur(8px);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .toggle-sidebar-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .page-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .progress-widget {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background-color: var(--bg-primary);
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    .progress-bar-container {
+      width: 120px;
+      height: 8px;
+      background-color: var(--border-color);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-emerald));
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .progress-text {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-emerald);
+    }
+
+    .btn-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-icon:hover {
+      background-color: var(--bg-card-hover);
+      border-color: var(--border-focus);
+    }
+
+    /* Content Body */
+    .content-container {
+      padding: 32px;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.2), rgba(20, 184, 166, 0.15)), var(--bg-secondary);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      right: -40px;
+      bottom: -40px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tag-infosys { background: rgba(2, 132, 199, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .tag-mern { background: rgba(20, 184, 166, 0.2); color: #2dd4bf; border: 1px solid rgba(45, 212, 191, 0.3); }
+    .tag-exp { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+    .tag-ai { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(192, 132, 252, 0.3); }
+
+    .hero-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .hero-description {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      max-width: 850px;
+      margin-bottom: 20px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .stat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .stat-val {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .stat-lbl {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Section & Cards */
+    .module-section {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .module-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-header {
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 16px;
+    }
+
+    .section-header-left h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-header-left p {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* Content Cards */
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      border-color: rgba(6, 182, 212, 0.4);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Accordion Style Q&A */
+    .accordion-item {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .accordion-item:hover {
+      border-color: rgba(6, 182, 212, 0.4);
+    }
+
+    .accordion-header {
+      padding: 18px 22px;
+      background-color: var(--bg-card);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      user-select: none;
+    }
+
+    .accordion-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .q-number {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--accent-cyan);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    .accordion-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .diff-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 12px;
+      text-transform: uppercase;
+    }
+
+    .diff-easy { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+    .diff-medium { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+    .diff-hard { background: rgba(244, 63, 94, 0.15); color: #fb7185; }
+    .diff-must { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); }
+
+    .accordion-icon {
+      color: var(--text-muted);
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-item.active .accordion-icon {
+      transform: rotate(180deg);
+      color: var(--accent-cyan);
+    }
+
+    .accordion-body {
+      display: none;
+      padding: 20px 24px 24px;
+      border-top: 1px solid var(--border-color);
+      background-color: rgba(15, 23, 42, 0.4);
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .accordion-item.active .accordion-body {
+      display: block;
+    }
+
+    /* Checkbox list */
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      transition: var(--transition);
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .checklist-item:hover {
+      background-color: var(--bg-primary);
+      border-color: var(--border-color);
+    }
+
+    .checklist-cb {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: var(--accent-teal);
+      cursor: pointer;
+    }
+
+    .checklist-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .checklist-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Code Blocks */
+    pre code {
+      display: block;
+      background-color: var(--code-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #e2e8f0;
+      overflow-x: auto;
+      margin: 14px 0;
+      line-height: 1.5;
+    }
+
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #0d1322;
+      border: 1px solid var(--border-color);
+      border-bottom: none;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      padding: 8px 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .code-header + pre code {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      margin-top: 0;
+    }
+
+    .copy-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 12px;
+      transition: var(--transition);
+    }
+
+    .copy-btn:hover {
+      color: var(--accent-cyan);
+    }
+
+    /* Flashcard Widget */
+    .flashcard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .flashcard {
+      height: 180px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .flashcard-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .flashcard.flipped .flashcard-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flashcard-front, .flashcard-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-color);
+    }
+
+    .flashcard-front {
+      background: linear-gradient(135deg, var(--bg-card), var(--bg-primary));
+      color: var(--text-primary);
+    }
+
+    .flashcard-front h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--accent-cyan);
+    }
+
+    .flashcard-back {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.15), var(--bg-card));
+      color: var(--text-primary);
+      transform: rotateY(180deg);
+      text-align: left;
+      font-size: 13.5px;
+      line-height: 1.5;
+      overflow-y: auto;
+    }
+
+    /* Roadmap Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+      margin: 20px 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent-cyan), var(--accent-indigo));
+    }
+
+    .timeline-step {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .timeline-step::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 0 4px var(--bg-primary);
+    }
+
+    .timeline-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      margin-bottom: 4px;
+    }
+
+    .timeline-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+    }
+
+    /* Quiz Widget */
+    .quiz-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .quiz-opt {
+      padding: 12px 16px;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .quiz-opt:hover {
+      background-color: var(--bg-card-hover);
+      border-color: var(--border-focus);
+    }
+
+    .quiz-opt.correct {
+      background-color: rgba(16, 185, 129, 0.2);
+      border-color: var(--accent-emerald);
+      color: #34d399;
+      font-weight: 600;
+    }
+
+    .quiz-opt.incorrect {
+      background-color: rgba(244, 63, 94, 0.2);
+      border-color: var(--accent-rose);
+      color: #fb7185;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .main-wrapper {
+        margin-left: 0;
+      }
+      .toggle-sidebar-btn {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="brand-logo">
+        <i class="fa-solid fa-code"></i>
+      </div>
+      <div>
+        <div class="brand-title">Infosys MERN Prep</div>
+        <div class="brand-subtitle">Interview LMS Portal</div>
+      </div>
+    </div>
+
+    <div class="sidebar-search">
+      <div class="search-input-wrapper">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="topicSearch" class="search-input" placeholder="Search topics, tech or questions...">
+      </div>
+    </div>
+
+    <nav class="module-nav">
+      <div class="nav-section-title">Course Modules</div>
+
+      <a class="nav-item active" onclick="switchModule('mod-1', this)">
+        <div class="nav-item-left">
+          <div class="nav-item-icon"><i class="fa-solid fa-compass"></i></div>
+          <span>1. Overview & Roadmap</span>
+        </div>
+        <span class="badge-count">3</span>
+      </a>
+
+      <a class="nav-item" onclick="switchModule('mod-2', this)">
+        <div class="nav-item-left">
+          <div class="nav-item-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <span>2. Core Tech Deep Dives</span>
+        </div>
+        <span class="badge-count">4</span>
+      </a>
+
+      <a class="nav-item" onclick="switchModule('mod-3', this)">
+        <div class="nav-item-left">
+          <div class="nav-item-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <span>3. Coding & Algorithms</span>
+        </div>
+        <span class="badge-count">5</span>
+      </a>
+
+      <a class="nav-item" onclick="switchModule('mod-4', this)">
+        <div class="nav-item-left">
+          <div class="nav-item-icon"><i class="fa-solid fa-sitemap"></i></div>
+          <span>4. System Design Blueprints</span>
+        </div>
+        <span class="badge-count">2</span>
+      </a>
+
+      <a class="nav-item" onclick="switchModule('mod-5', this)">
+        <div class="nav-item-left">
+          <div class="nav-item-icon"><i class="fa-solid fa-robot"></i></div>
+          <span>5. AI-Enabled Features</span>
+        </div>
+        <span class="badge-count">3</span>
+      </a>
+
+      <a class="nav-item" onclick="switchModule('mod-6', this)">
+        <div class="nav-item-left">
+          <div class="nav-item-icon"><i class="fa-solid fa-user-tie"></i></div>
+          <span>6. Behavioral (STAR)</span>
+        </div>
+        <span class="badge-count">4</span>
+      </a>
+
+      <a class="nav-item" onclick="switchModule('mod-7', this)">
+        <div class="nav-item-left">
+          <div class="nav-item-icon"><i class="fa-solid fa-clipboard-question"></i></div>
+          <span>7. Question Bank & Quiz</span>
+        </div>
+        <span class="badge-count">10</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div style="font-size: 12px; color: var(--text-muted);">Infosys Candidate Mode</div>
+      <button class="btn-icon" onclick="resetProgress()" title="Reset Progress">
+        <i class="fa-solid fa-rotate-right"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Wrapper -->
+  <div class="main-wrapper">
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="header-left">
+        <button class="toggle-sidebar-btn" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+        <div class="page-title" id="currentModuleTitle">Module 1: Overview & JD Roadmap</div>
+      </div>
+      <div class="header-right">
+        <div class="progress-widget">
+          <div style="font-size: 12px; font-weight: 600; color: var(--text-secondary);">Progress</div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="overallProgressBar"></div>
+          </div>
+          <div class="progress-text" id="overallProgressText">0%</div>
+        </div>
+        <button class="btn-icon" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Content Container -->
+    <main class="content-container">
+      <!-- Hero Banner -->
+      <div class="hero-banner">
+        <div class="hero-badge-row">
+          <span class="tag-badge tag-infosys"><i class="fa-solid fa-building"></i> Infosys Technical Prep</span>
+          <span class="tag-badge tag-mern"><i class="fa-brands fa-react"></i> MERN Full-Stack</span>
+          <span class="tag-badge tag-exp"><i class="fa-solid fa-briefcase"></i> 3–5 Yrs Experience</span>
+          <span class="tag-badge tag-ai"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Feature Delivery</span>
+        </div>
+        <h1 class="hero-title">Infosys Senior MERN Developer Interview Prep</h1>
+        <p class="hero-description">
+          Master React architecture, Node.js event-driven APIs, MongoDB performance tuning, reactive streams, enterprise security, and AI service integrations aligned with Infosys digital transformation standards.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat-card">
+            <div class="stat-icon" style="background: rgba(2, 132, 199, 0.2); color: #38bdf8;">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+            <div>
+              <div class="stat-val">14 Days</div>
+              <div class="stat-lbl">Target Study Timeline</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon" style="background: rgba(20, 184, 166, 0.2); color: #2dd4bf;">
+              <div id="statCompletedCount">0 / 31</div>
+            </div>
+            <div>
+              <div class="stat-val" id="statCompletedText">Topics Done</div>
+              <div class="stat-lbl">Interactive Checklist</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon" style="background: rgba(168, 85, 247, 0.2); color: #c084fc;">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <div>
+              <div class="stat-val">High Impact</div>
+              <div class="stat-lbl">Infosys Interview Topics</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULE 1 -->
+      <section id="mod-1" class="module-section active">
+        <div class="section-header">
+          <div class="section-header-left">
+            <h2><i class="fa-solid fa-compass" style="color: var(--accent-cyan);"></i> Module 1: Overview & JD Breakdown</h2>
+            <p>Infosys expectations, key competencies evaluated, and structured 14-day study plan.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">🎯 Role Requirement Analysis & Evaluation Criteria</h3>
+          <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 16px;">
+            Infosys is looking for a <strong>MERN Stack Developer (3–5 years)</strong> who can design enterprise-grade single-page applications, build high-throughput Node.js microservices, optimize MongoDB schemas, and integrate modern AI features.
+          </p>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 16px;">
+            <div style="background: var(--bg-primary); border: 1px solid var(--border-color); padding: 16px; border-radius: 10px;">
+              <h4 style="color: var(--accent-cyan); font-size: 14px; margin-bottom: 8px;"><i class="fa-brands fa-react"></i> Front-End Mastery</h4>
+              <ul style="font-size: 13px; color: var(--text-secondary); padding-left: 18px;">
+                <li>Reusable component design in React 18+</li>
+                <li>State management (Context API, Redux Toolkit)</li>
+                <li>Rendering performance & custom hooks</li>
+                <li>Cross-browser responsiveness & UX standards</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--bg-primary); border: 1px solid var(--border-color); padding: 16px; border-radius: 10px;">
+              <h4 style="color: var(--accent-teal); font-size: 14px; margin-bottom: 8px;"><i class="fa-brands fa-node-js"></i> Back-End & Reactive Node</h4>
+              <ul style="font-size: 13px; color: var(--text-secondary); padding-left: 18px;">
+                <li>RESTful API design & Express.js middleware</li>
+                <li>Node.js Event Loop & non-blocking I/O</li>
+                <li>Reactive programming patterns (RxJS, Streams)</li>
+                <li>JWT / OAuth authentication & rate-limiting</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--bg-primary); border: 1px solid var(--border-color); padding: 16px; border-radius: 10px;">
+              <h4 style="color: var(--accent-amber); font-size: 14px; margin-bottom: 8px;"><i class="fa-solid fa-database"></i> Database & Performance</h4>
+              <ul style="font-size: 13px; color: var(--text-secondary); padding-left: 18px;">
+                <li>MongoDB schema modeling (Embedded vs Reference)</li>
+                <li>Indexing strategies & query execution plans</li>
+                <li>Aggregation Pipelines (`$facet`, `$lookup`)</li>
+                <li>Observability, logging & production debugging</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--bg-primary); border: 1px solid var(--border-color); padding: 16px; border-radius: 10px;">
+              <h4 style="color: var(--accent-purple); font-size: 14px; margin-bottom: 8px;"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Integration & Quality</h4>
+              <ul style="font-size: 13px; color: var(--text-secondary); padding-left: 18px;">
+                <li>LLM API integration (Summarization, Chatbots)</li>
+                <li>Data privacy & responsible AI handling</li>
+                <li>Clean, testable code with Jest & Supertest</li>
+                <li>Agile sprint delivery & documentation standards</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">📅 Structured 14-Day Study Plan Roadmap</h3>
+          <div class="timeline">
+            <div class="timeline-step">
+              <div class="timeline-title">Days 1–3: React 18 Core & Advanced Hooks</div>
+              <div class="timeline-desc">Deep dive into Virtual DOM reconciliation, Fiber architecture, custom hooks, memoization (`useMemo`, `useCallback`), and state management patterns.</div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-title">Days 4–6: Node.js Architecture, Express & Reactive Streams</div>
+              <div class="timeline-desc">Master the Node.js Event Loop phases, Libuv thread pool, custom middleware, error handling, rate limiting, and Reactive Streams processing.</div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-title">Days 7–9: MongoDB Schema Optimization & Aggregations</div>
+              <div class="timeline-desc">Study indexing (Compound, ESM, TTL), `.explain("executionStats")`, Aggregation stages (`$match`, `$lookup`, `$facet`), and transaction safety.</div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-title">Days 10–11: System Design & AI Service Integration</div>
+              <div class="timeline-desc">Architect scalable MERN systems with Redis caching, message queues, and AI LLM endpoints for summarization and intelligent search.</div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-title">Days 12–14: Behavioral (STAR), Mock Questions & Final Revision</div>
+              <div class="timeline-desc">Practice STAR stories for Infosys core values, practice coding problems, and revise flashcards.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">⚡ Interactive Revision Flashcards</h3>
+          <p style="color: var(--text-secondary); font-size: 13.5px;">Click on any flashcard to flip and reveal the key technical concept!</p>
+          <div class="flashcard-grid">
+            <div class="flashcard" onclick="this.classList.toggle('flipped')">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <h4>Node.js Event Loop Phases</h4>
+                  <p style="font-size: 12px; color: var(--text-muted);">Click to Flip</p>
+                </div>
+                <div class="flashcard-back">
+                  <strong>6 Phases:</strong><br>
+                  1. Timers (setTimeout, setInterval)<br>
+                  2. Pending Callbacks<br>
+                  3. Idle, Prepare<br>
+                  4. Poll (retrieve I/O events)<br>
+                  5. Check (setImmediate)<br>
+                  6. Close Callbacks
+                </div>
+              </div>
+            </div>
+
+            <div class="flashcard" onclick="this.classList.toggle('flipped')">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <h4>React Reconciliation & Fiber</h4>
+                  <p style="font-size: 12px; color: var(--text-muted);">Click to Flip</p>
+                </div>
+                <div class="flashcard-back">
+                  <strong>React Fiber:</strong><br>
+                  Re-implementation of React's core algorithm enabling incremental rendering, pausing/resuming work, and prioritizing UI updates across frames.
+                </div>
+              </div>
+            </div>
+
+            <div class="flashcard" onclick="this.classList.toggle('flipped')">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <h4>ESR & Compound Indexes in MongoDB</h4>
+                  <p style="font-size: 12px; color: var(--text-muted);">Click to Flip</p>
+                </div>
+                <div class="flashcard-back">
+                  <strong>ESR Rule:</strong><br>
+                  1. <strong>E</strong>quality fields first<br>
+                  2. <strong>S</strong>ort fields second<br>
+                  3. <strong>R</strong>ange fields last<br>
+                  Ensures optimal index usage and eliminates in-memory sorting.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE 2 -->
+      <section id="mod-2" class="module-section">
+        <div class="section-header">
+          <div class="section-header-left">
+            <h2><i class="fa-solid fa-layer-group" style="color: var(--accent-teal);"></i> Module 2: Core Technical Deep Dives</h2>
+            <p>In-depth architectural & conceptual notes for React, Node.js, Express, and MongoDB.</p>
+          </div>
+        </div>
+
+        <!-- Topic 1: React -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title">
+              <span class="q-number">REACT-01</span>
+              <span>React 18 Concurrent Features & Custom Hooks Architecture</span>
+            </div>
+            <div class="accordion-meta">
+              <span class="diff-badge diff-must">Must Know</span>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </div>
+          </div>
+          <div class="accordion-body">
+            <h4 style="color: var(--text-primary); margin-bottom: 8px;">Key Concepts:</h4>
+            <ul style="padding-left: 20px; margin-bottom: 12px;">
+              <li><strong>Automatic Batching:</strong> React 18 batches multiple state updates into a single re-render even inside Promises, setTimeout, or native event handlers.</li>
+              <li><strong>`useTransition` & `useDeferredValue`:</strong> Allows marking state updates as non-urgent transitions so the UI remains responsive during expensive renders.</li>
+              <li><strong>Custom Hook Best Practices:</strong> Keep side-effects isolated, return standard tuples or objects, and cleanly cancel asynchronous operations using `AbortController`.</li>
+            </ul>
+
+            <div class="code-header">
+              <span>useDebouncedFetch.js (Custom Hook with Cancellation)</span>
+              <button class="copy-btn" onclick="copyCode(this)"><i class="fa-solid fa-copy"></i> Copy</button>
+            </div>
+            <pre><code>import { useState, useEffect } from 'react';
+
+export function useDebouncedFetch(url, delay = 300) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (!url) return;
+    const controller = new AbortController();
+    const handler = setTimeout(async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(url, { signal: controller.signal });
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        const result = await res.json();
+        setData(result);
+        setError(null);
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          setError(err.message);
+        }
+      } finally {
+        setLoading(false);
+      }
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+      controller.abort(); // Cancel pending network request on unmount/re-render
+    };
+  }, [url, delay]);
+
+  return { data, loading, error };
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- Topic 2: Node.js -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title">
+              <span class="q-number">NODE-01</span>
+              <span>Node.js Event Loop & Reactive Streams Processing</span>
+            </div>
+            <div class="accordion-meta">
+              <span class="diff-badge diff-hard">Hard</span>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </div>
+          </div>
+          <div class="accordion-body">
+            <p style="margin-bottom: 10px;">
+              Node.js operates on a single-threaded event loop backed by Libuv's thread pool (default size: 4). Understanding memory management and avoiding event loop blocking is critical for high-throughput microservices.
+            </p>
+            <h4 style="color: var(--text-primary); margin-top: 10px; margin-bottom: 6px;">Handling Large Data Datasets with Streams & Backpressure:</h4>
+
+            <div class="code-header">
+              <span>streamProcessor.js (Node.js Transform Stream)</span>
+              <button class="copy-btn" onclick="copyCode(this)"><i class="fa-solid fa-copy"></i> Copy</button>
+            </div>
+            <pre><code>const { Transform, pipeline } = require('stream');
+const fs = require('fs');
+
+// High-performance log transform stream avoiding memory spikes
+const logTransformer = new Transform({
+  transform(chunk, encoding, callback) {
+    const lines = chunk.toString().split('\n');
+    const filtered = lines.filter(line => line.includes('ERROR'));
+    this.push(filtered.join('\n') + '\n');
+    callback();
+  }
+});
+
+pipeline(
+  fs.createReadStream('./production-large.log'),
+  logTransformer,
+  fs.createWriteStream('./error-audit.log'),
+  (err) => {
+    if (err) console.error('Pipeline failed:', err);
+    else console.log('Log processing complete cleanly.');
+  }
+);</code></pre>
+          </div>
+        </div>
+
+        <!-- Topic 3: MongoDB -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title">
+              <span class="q-number">MONGO-01</span>
+              <span>MongoDB Query Optimization, Indexing & Aggregations</span>
+            </div>
+            <div class="accordion-meta">
+              <span class="diff-badge diff-must">Must Know</span>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </div>
+          </div>
+          <div class="accordion-body">
+            <p style="margin-bottom: 12px;">
+              For Infosys applications processing millions of records, unindexed queries cause COLLSCAN (collection scans) which degrade performance. Use <code>explain("executionStats")</code> to verify index hits.
+            </p>
+
+            <div class="code-header">
+              <span>aggregationPipeline.js (Paginated Facet Query)</span>
+              <button class="copy-btn" onclick="copyCode(this)"><i class="fa-solid fa-copy"></i> Copy</button>
+            </div>
+            <pre><code>// Efficient single-pass query retrieving data + total count
+db.orders.aggregate([
+  { $match: { status: "DELIVERED", createdAt: { $gte: new Date('2026-01-01') } } },
+  {
+    $facet: {
+      metadata: [{ $count: "totalRecords" }],
+      data: [
+        { $sort: { createdAt: -1 } },
+        { $skip: 20 },
+        { $limit: 10 },
+        { $project: { _id: 1, customerId: 1, totalAmount: 1, createdAt: 1 } }
+      ]
+    }
+  }
+]);</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE 3 -->
+      <section id="mod-3" class="module-section">
+        <div class="section-header">
+          <div class="section-header-left">
+            <h2><i class="fa-solid fa-laptop-code" style="color: var(--accent-cyan);"></i> Module 3: Coding & Problem Solving</h2>
+            <p>Production-level JavaScript & Node.js coding problems asked in technical rounds.</p>
+          </div>
+        </div>
+
+        <!-- Problem 1 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title">
+              <span class="q-number">CODE-01</span>
+              <span>Implement a Token Bucket Rate Limiter Middleware in Express</span>
+            </div>
+            <div class="accordion-meta">
+              <span class="diff-badge diff-medium">Medium</span>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </div>
+          </div>
+          <div class="accordion-body">
+            <p style="margin-bottom: 10px;"><strong>Task:</strong> Create a custom Express middleware to prevent API abuse by limiting each IP address to N requests per window without external dependencies.</p>
+
+            <div class="code-header">
+              <span>rateLimiter.js</span>
+              <button class="copy-btn" onclick="copyCode(this)"><i class="fa-solid fa-copy"></i> Copy</button>
+            </div>
+            <pre><code>function createRateLimiter({ windowMs = 60000, maxRequests = 100 }) {
+  const ipStore = new Map();
+
+  return (req, res, next) => {
+    const clientIP = req.ip || req.connection.remoteAddress;
+    const now = Date.now();
+
+    if (!ipStore.has(clientIP)) {
+      ipStore.set(clientIP, { count: 1, resetTime: now + windowMs });
+      return next();
+    }
+
+    const record = ipStore.get(clientIP);
+
+    if (now > record.resetTime) {
+      record.count = 1;
+      record.resetTime = now + windowMs;
+      return next();
+    }
+
+    if (record.count >= maxRequests) {
+      return res.status(429).json({
+        error: 'Too Many Requests',
+        retryAfterMs: record.resetTime - now
+      });
+    }
+
+    record.count++;
+    next();
+  };
+}
+
+module.exports = createRateLimiter;</code></pre>
+          </div>
+        </div>
+
+        <!-- Problem 2 -->
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title">
+              <span class="q-number">CODE-02</span>
+              <span>Implement LRU (Least Recently Used) Cache Class in JavaScript</span>
+            </div>
+            <div class="accordion-meta">
+              <span class="diff-badge diff-hard">Hard</span>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </div>
+          </div>
+          <div class="accordion-body">
+            <p style="margin-bottom: 10px;"><strong>Task:</strong> Implement an LRU Cache with <code>get(key)</code> and <code>put(key, value)</code> operating in O(1) time complexity using Map.</p>
+
+            <div class="code-header">
+              <span>lruCache.js</span>
+              <button class="copy-btn" onclick="copyCode(this)"><i class="fa-solid fa-copy"></i> Copy</button>
+            </div>
+            <pre><code>class LRUCache {
+  constructor(capacity) {
+    this.capacity = capacity;
+    this.cache = new Map(); // Map preserves insertion order
+  }
+
+  get(key) {
+    if (!this.cache.has(key)) return -1;
+    const val = this.cache.get(key);
+    // Refresh key to recent position
+    this.cache.delete(key);
+    this.cache.set(key, val);
+    return val;
+  }
+
+  put(key, value) {
+    if (this.cache.has(key)) {
+      this.cache.delete(key);
+    } else if (this.cache.size >= this.capacity) {
+      // Evict least recently used (first key in map iterator)
+      const oldestKey = this.cache.keys().next().value;
+      this.cache.delete(oldestKey);
+    }
+    this.cache.set(key, value);
+  }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE 4 -->
+      <section id="mod-4" class="module-section">
+        <div class="section-header">
+          <div class="section-header-left">
+            <h2><i class="fa-solid fa-sitemap" style="color: var(--accent-indigo);"></i> Module 4: System Design Blueprints</h2>
+            <p>Architecture breakdown tailored for Infosys enterprise scale.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">🏛️ Blueprint 1: Enterprise Multi-Tenant MERN Platform with Microservices</h3>
+          <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 16px;">
+            Architecture diagram and component breakdown for a high-availability client web platform.
+          </p>
+
+          <div style="background: var(--code-bg); border: 1px solid var(--border-color); padding: 20px; border-radius: 10px; font-family: monospace; font-size: 13px; color: #38bdf8; line-height: 1.8;">
+            [ React 18 SPA Client ] <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;│ (HTTPS / WSS)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+            [ NGINX Reverse Proxy & SSL Termination ]<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;│<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+            [ Node.js API Gateway (Express + Rate Limiter + JWT Auth) ]<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;├──► [ Redis Cache ] (Session state, cached queries, rate-limit keys)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;├──► [ User/Auth Microservice ] ──► [ MongoDB Auth Replica Set ]<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;├──► [ Order & Inventory Microservice ] ──► [ MongoDB Orders Sharded Cluster ]<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;└──► [ AI Worker Queue (RabbitMQ / BullMQ) ] ──► [ Node.js AI Service (LLM API) ]
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE 5 -->
+      <section id="mod-5" class="module-section">
+        <div class="section-header">
+          <div class="section-header-left">
+            <h2><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-purple);"></i> Module 5: AI-Enabled Feature Delivery</h2>
+            <p>Integrating LLMs, prompt engineering, streaming responses, and data privacy in Node.js.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">🤖 Infosys Topaz Mindset: AI Integration Patterns</h3>
+          <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 16px;">
+            The Infosys JD explicitly highlights <em>"AI-Enabled Feature Delivery"</em>. Here is how to implement streaming AI summarization with data anonymization in Express.js.
+          </p>
+
+          <div class="code-header">
+            <span>aiSummarizerService.js (Node.js Streaming + PII Protection)</span>
+            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-solid fa-copy"></i> Copy</button>
+          </div>
+          <pre><code>const express = require('express');
+const router = express.Router();
+
+// Helper to sanitize PII before calling third-party AI APIs
+function sanitizePII(text) {
+  return text
+    .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '[REDACTED_EMAIL]')
+    .replace(/\b\d{3}[-.]?\d{3}[-.]?\d{4}\b/g, '[REDACTED_PHONE]');
+}
+
+router.post('/ai/summarize-stream', async (req, res) => {
+  const { documentText } = req.body;
+  if (!documentText) return res.status(400).json({ error: 'Text required' });
+
+  const cleanText = sanitizePII(documentText);
+
+  // Set headers for Server-Sent Events (SSE) streaming response
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+
+  try {
+    // Simulated call to LLM streaming client (e.g. OpenAI / Anthropic SDK)
+    const stream = await callLLMStream(cleanText);
+
+    for await (const chunk of stream) {
+      res.write(`data: ${JSON.stringify({ token: chunk })}\n\n`);
+    }
+
+    res.write('data: [DONE]\n\n');
+    res.end();
+  } catch (err) {
+    res.write(`data: ${JSON.stringify({ error: 'AI Stream Failed' })}\n\n`);
+    res.end();
+  }
+});
+
+module.exports = router;</code></pre>
+        </div>
+      </section>
+
+      <!-- MODULE 6 -->
+      <section id="mod-6" class="module-section">
+        <div class="section-header">
+          <div class="section-header-left">
+            <h2><i class="fa-solid fa-user-tie" style="color: var(--accent-amber);"></i> Module 6: Behavioral & STAR Method</h2>
+            <p>Aligned with Infosys C-LIFE core values (Customer Focus, Leadership, Integrity, Fairness, Excellence).</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">🌟 STAR Template 1: Production Performance Debugging</h3>
+          <div style="font-size: 14px; color: var(--text-secondary);">
+            <p><strong>Situation:</strong> During a high-traffic release, our React-MongoDB portal experienced 4-second API response latencies and high CPU usage.</p>
+            <p><strong>Task:</strong> As the Senior MERN Developer, I was tasked with diagnosing the bottleneck and restoring sub-300ms SLA without downtime.</p>
+            <p><strong>Action:</strong> Ran MongoDB <code>.explain("executionStats")</code> to discover missing compound indexes on customer queries. Implemented a Redis cache layer for read-heavy reference endpoints and optimized React re-renders using <code>React.memo</code>.</p>
+            <p><strong>Result:</strong> Reduced API latency by 85% (from 4000ms to 220ms) and decreased database CPU load from 92% to 28%.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE 7 -->
+      <section id="mod-7" class="module-section">
+        <div class="section-header">
+          <div class="section-header-left">
+            <h2><i class="fa-solid fa-clipboard-question" style="color: var(--accent-rose);"></i> Module 7: Question Bank & Self-Assessment Quiz</h2>
+            <p>Self-testing question bank and interactive quiz widget.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">🧠 Self-Assessment Practice Quiz</h3>
+          <div class="quiz-card" id="quizCard">
+            <h4 style="font-size: 15px; color: var(--text-primary);" id="quizQuestion">
+              1. Which MongoDB ESR rule order is correct for creating optimal compound indexes?
+            </h4>
+            <div class="quiz-options">
+              <div class="quiz-opt" onclick="checkQuiz(this, false)">A. Range fields first, Sort second, Equality last</div>
+              <div class="quiz-opt" onclick="checkQuiz(this, true)">B. Equality fields first, Sort second, Range fields last</div>
+              <div class="quiz-opt" onclick="checkQuiz(this, false)">C. Sort fields first, Equality second, Range last</div>
+              <div class="quiz-opt" onclick="checkQuiz(this, false)">D. Order does not matter in MongoDB index engine</div>
+            </div>
+            <div id="quizFeedback" style="margin-top: 14px; font-size: 13.5px; display: none;"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">📋 Topic Completion Checklist</h3>
+          <div id="checklistContainer">
+            <div class="checklist-item" onclick="toggleCheck('c1')">
+              <input type="checkbox" id="c1" class="checklist-cb" onchange="updateProgress()">
+              <div>
+                <div class="checklist-label">React 18 Virtual DOM, Fiber & Concurrent Rendering</div>
+                <div class="checklist-sub">Module 2 • Front-End</div>
+              </div>
+            </div>
+
+            <div class="checklist-item" onclick="toggleCheck('c2')">
+              <input type="checkbox" id="c2" class="checklist-cb" onchange="updateProgress()">
+              <div>
+                <div class="checklist-label">Node.js Event Loop 6 Phases & Memory Leak Detection</div>
+                <div class="checklist-sub">Module 2 • Back-End</div>
+              </div>
+            </div>
+
+            <div class="checklist-item" onclick="toggleCheck('c3')">
+              <input type="checkbox" id="c3" class="checklist-cb" onchange="updateProgress()">
+              <div>
+                <div class="checklist-label">MongoDB Indexing (ESR Rule, Explain Plans & Facets)</div>
+                <div class="checklist-sub">Module 2 • Database</div>
+              </div>
+            </div>
+
+            <div class="checklist-item" onclick="toggleCheck('c4')">
+              <input type="checkbox" id="c4" class="checklist-cb" onchange="updateProgress()">
+              <div>
+                <div class="checklist-label">Express Rate-Limiting & JWT Auth Security</div>
+                <div class="checklist-sub">Module 3 • Coding</div>
+              </div>
+            </div>
+
+            <div class="checklist-item" onclick="toggleCheck('c5')">
+              <input type="checkbox" id="c5" class="checklist-cb" onchange="updateProgress()">
+              <div>
+                <div class="checklist-label">AI Service Integration & SSE Streaming API</div>
+                <div class="checklist-sub">Module 5 • AI Delivery</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script>
+  // Progress & LocalStorage Handling
+  const STORAGE_KEY = 'infosys_mern_prep_progress';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    loadProgress();
+    updateProgress();
+  });
+
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+  }
+
+  function switchModule(modId, navEl) {
+    document.querySelectorAll('.module-section').forEach(sec => sec.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+
+    document.getElementById(modId).classList.add('active');
+    if (navEl) navEl.classList.add('active');
+
+    // Update Header Title
+    const titleText = navEl ? navEl.querySelector('span').innerText : 'Module Details';
+    document.getElementById('currentModuleTitle').innerText = titleText;
+
+    if (window.innerWidth <= 992) {
+      document.getElementById('sidebar').classList.remove('open');
+    }
+  }
+
+  function toggleAccordion(headerEl) {
+    const item = headerEl.parentElement;
+    item.classList.toggle('active');
+  }
+
+  function toggleCheck(id) {
+    const cb = document.getElementById(id);
+    if (cb) {
+      cb.checked = !cb.checked;
+      updateProgress();
+    }
+  }
+
+  function updateProgress() {
+    const checkboxes = document.querySelectorAll('.checklist-cb');
+    let checkedCount = 0;
+
+    const savedState = {};
+
+    checkboxes.forEach(cb => {
+      if (cb.checked) checkedCount++;
+      savedState[cb.id] = cb.checked;
+    });
+
+    const total = checkboxes.length || 1;
+    const percent = Math.round((checkedCount / total) * 100);
+
+    document.getElementById('overallProgressBar').style.width = percent + '%';
+    document.getElementById('overallProgressText').innerText = percent + '%';
+    document.getElementById('statCompletedCount').innerText = `${checkedCount} / ${total}`;
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(savedState));
+  }
+
+  function loadProgress() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        Object.keys(parsed).forEach(id => {
+          const cb = document.getElementById(id);
+          if (cb) cb.checked = parsed[id];
+        });
+      } catch (e) {
+        console.error('Failed to load progress', e);
+      }
+    }
+  }
+
+  function resetProgress() {
+    if (confirm('Are you sure you want to reset your study progress?')) {
+      localStorage.removeItem(STORAGE_KEY);
+      document.querySelectorAll('.checklist-cb').forEach(cb => cb.checked = false);
+      updateProgress();
+    }
+  }
+
+  function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    const icon = document.getElementById('themeIcon');
+    if (newTheme === 'light') {
+      icon.className = 'fa-solid fa-sun';
+    } else {
+      icon.className = 'fa-solid fa-moon';
+    }
+  }
+
+  function copyCode(btn) {
+    const pre = btn.parentElement.nextElementSibling;
+    const code = pre.querySelector('code').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+      setTimeout(() => btn.innerHTML = originalText, 2000);
+    });
+  }
+
+  function checkQuiz(optEl, isCorrect) {
+    const opts = optEl.parentElement.querySelectorAll('.quiz-opt');
+    opts.forEach(o => o.classList.remove('correct', 'incorrect'));
+
+    const feedback = document.getElementById('quizFeedback');
+    feedback.style.display = 'block';
+
+    if (isCorrect) {
+      optEl.classList.add('correct');
+      feedback.innerHTML = '<span style="color: #34d399; font-weight: 700;"><i class="fa-solid fa-circle-check"></i> Correct!</span> ESR (Equality, Sort, Range) optimizes MongoDB compound indexes by eliminating in-memory sorts and filtering documents efficiently.';
+    } else {
+      optEl.classList.add('incorrect');
+      feedback.innerHTML = '<span style="color: #fb7185; font-weight: 700;"><i class="fa-solid fa-circle-xmark"></i> Incorrect.</span> Remember the ESR Rule: Equality fields first, Sort fields second, and Range fields last.';
+    }
+  }
+
+  // Topic Search Filter
+  document.getElementById('topicSearch').addEventListener('input', function(e) {
+    const query = e.target.value.toLowerCase().trim();
+    const accordionItems = document.querySelectorAll('.accordion-item');
+
+    accordionItems.forEach(item => {
+      const text = item.innerText.toLowerCase();
+      if (text.includes(query)) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+# Sample Prompts for generate_interview_prep Skill
+
+Below are examples of how to prompt the coding assistant to execute the `generate_interview_prep` skill.
+
+---
+
+### Example 1: Direct Job Description Paste (Recommended)
+Use this when you have the full text of the job description for a specific role.
+
+```text
+Please generate an interview preparation plan and study guide for this role:
+
+[Paste Job Description text here]
+
+Format it as an interactive web UI online course LMS dashboard and save it in directory interview_prep/amex.
+```
+
+---
+
+### Example 2: By Company and Role Profile
+Use this when targeting a standard position at a company without pasting a full JD.
+
+```text
+Generate a comprehensive interview prep portal and study material for a Senior MERN Stack & AI Engineer position at Infosys. Provide deep technical study notes, coding patterns, system design blueprints, and behavioral STAR Q&A in a Coursera/Educative-style web UI. Save it in interview_prep/infosys.
+```
+
+---
+
+### Example 3: Step-by-Step Interactive Flow
+Use this to let the assistant guide you.
+
+```text
+I have an upcoming technical interview and need a full study plan and prep course web app. Trigger the generate_interview_prep skill and ask me for the job description details.
+```
