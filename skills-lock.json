@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "interview-prep": {
+      "source": "anthropics/knowledge-work-plugins",
+      "sourceType": "github",
+      "skillPath": "human-resources/skills/interview-prep/SKILL.md",
+      "computedHash": "24c96c7c4db9c6741750225d9c9cc60a61e9b47d2e0f2c18cbc8465c1be109ac"
+    }
+  }
+}
